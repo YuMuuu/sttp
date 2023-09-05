@@ -677,6 +677,16 @@ lazy val okhttpMonixBackend =
   okhttpBackendProject("monix", includeDotty = true)
     .dependsOn(monix % compileAndTest)
 
+
+lazy val okhttpFs2Ce2Backend =
+  okhttpBackendProject("fs2-ce2", includeDotty = true )
+    .settings(
+      libraryDependencies ++= dependenciesFor(scalaVersion.value)(
+        "co.fs2" %% "fs2-reactive-streams" % fs2_2_version(_)
+      )
+    )
+    .dependsOn(fs2Ce2 % compileAndTest)
+
 //-- http4s
 lazy val http4sCe2Backend = (projectMatrix in file("http4s-ce2-backend"))
   .settings(commonJvmSettings)
