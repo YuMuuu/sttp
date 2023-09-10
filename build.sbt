@@ -212,6 +212,7 @@ lazy val allAggregates = projectsWithOptionalNative ++
   asyncHttpClientFs2Ce2Backend.projectRefs ++
   asyncHttpClientFs2Backend.projectRefs ++
   okhttpBackend.projectRefs ++
+  okhttpFs2Ce2Backend.projectRefs ++
   okhttpMonixBackend.projectRefs ++
   http4sCe2Backend.projectRefs ++
   http4sBackend.projectRefs ++
@@ -677,9 +678,8 @@ lazy val okhttpMonixBackend =
   okhttpBackendProject("monix", includeDotty = true)
     .dependsOn(monix % compileAndTest)
 
-
 lazy val okhttpFs2Ce2Backend =
-  okhttpBackendProject("fs2-ce2", includeDotty = true )
+  okhttpBackendProject("fs2-ce2", includeDotty = true)
     .settings(
       libraryDependencies ++= dependenciesFor(scalaVersion.value)(
         "co.fs2" %% "fs2-reactive-streams" % fs2_2_version(_)
